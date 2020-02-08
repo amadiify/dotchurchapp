@@ -1,0 +1,113 @@
+<ion-header id="dashboardheader">
+    <ion-navbar hideBackButton>
+        <button item-start menuToggle icon-only ion-button style="display:block !important; margin-top: -20px;
+        font-weight: bold;
+        opacity: 1;"> 
+            <ion-icon name="menu" style="color:#fff; font-size:30px;"></ion-icon>
+        </button>
+
+        <ion-list>
+            <ion-item no-border style="background:none;">
+                <ion-title item-start style="background:none; 
+              border:none; width:100px;">
+                    <span style="font-size:16px;"> Dashboard </span>
+                </ion-title>
+                <ion-avatar item-end>
+                    <img [src]="avatar" class="avatar">
+                </ion-avatar>
+            </ion-item>
+        </ion-list>
+    </ion-navbar>
+</ion-header>
+
+<ion-content no-padding style="margin-top:-20px;" id="app">
+
+
+    <div class="pages" padding>
+        <ion-slides #homeSlides *ngIf="sermons" pager style="border:0px solid #fff;" autoplay="1000" loop="true" speed="2000" effect="scroll" (ionSlideDidChange)="slideChanged()" id="homslide">
+            <ion-slide *ngFor="let sm of sermons" (click)="showSermon(sm)">
+                <img [src]="image + sm.sermonImage">
+                <ion-card-content style="text-align:center; position:relative; z-index:99;
+                        margin-top:-97px; color:#fff; background:rgba(0,0,0,0);">
+                    <ion-card-title style="color:#fff; font-size: 16px; text-transform:capitalize; position: relative; top:-15px;">{{ sm.sermonTopic }}</ion-card-title>
+
+                </ion-card-content>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <ion-card style="margin-bottom:5px; margin-top:-10px;" id="sermonSlide">
+        <ion-slides *ngIf="sermons">
+            <ion-slide *ngFor="let sm of sermons" (click)="showSermon(sm)">
+                <ion-item style="border:none; padding:0px; background:#fff;">
+                    <ion-thumbnail item-start>
+                        <img [src]="image + sm.sermonImage">
+                    </ion-thumbnail>
+                    <ion-title>
+                        <h4 style="font-size: 1.7rem;
+                        font-family: Montserrat; color: #000;">{{ sm.sermonTopic }}</h4>
+                        <p style="
+                        font-size: 14px;
+                        margin-top: 28px;">{{ subsr(sm.sermon) }}...</p>
+                    </ion-title>
+
+                    <ion-icon name="ios-arrow-forward" style="color:#f00;" item-end></ion-icon>
+                </ion-item>
+            </ion-slide>
+        </ion-slides>
+    </ion-card>
+
+    <ion-card style="margin-bottom:0px;">
+        <ion-slides *ngIf="programs">
+            <ion-slide *ngFor="let pg of programs">
+                <ion-item style="border:none; padding:0px; background:#fff; padding-left: 20px;">
+
+                    <h3 style="font-family:Montserrat; color:#000;">PROGRAMS & EVENTS </h3>
+                    <ion-title>
+                        <h4 style="font-size: 1.2rem;
+                                                margin-left: -12px;
+                                                font-family: Montserrat; color:#000;">{{ pg.program }}</h4>
+                        <p style="font-size: 14px;
+                                                margin-left: -10px;
+                                                margin-top: 9px;
+                                                color:#f00;
+                                                ">
+                            <small><ion-icon name="calendar"></ion-icon> &nbsp; {{pg.programDate}}</small> &nbsp; &nbsp; &nbsp;
+                            <small><ion-icon name="time"></ion-icon> &nbsp; {{pg.programTime}}</small>
+                        </p>
+                    </ion-title>
+
+                    <ion-icon name="ios-arrow-forward" style="color:#f00;" item-end></ion-icon>
+
+                </ion-item>
+            </ion-slide>
+        </ion-slides>
+    </ion-card>
+
+
+</ion-content>
+
+<style>
+    .pages {
+        height: 400px;
+    }
+    
+    .pages img {
+        height: 160px;
+        width: 100%;
+    }
+</style>
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>

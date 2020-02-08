@@ -1,0 +1,125 @@
+<ion-header id="header">
+    <ion-navbar>
+      <ion-list>
+        <ion-item no-border style="background:none;">
+            <button ion-button icon-only clear (click)="goback()" item-start>
+                <ion-icon name="ios-arrow-round-back" style="color:#fff; font-size:35px; opacity:1; font-weight:bold;"></ion-icon>
+            </button>
+   
+           <ion-title>
+               <span style="color:#fff; font-size:16px !important">Profile</span>
+           </ion-title>
+           
+           <ion-avatar item-end>
+             <img [src]="avatar">
+           </ion-avatar>
+        </ion-item>
+      </ion-list>
+        
+    </ion-navbar>
+
+    <ion-toolbar no-border-top id="toolbar">
+        <ion-segment [(ngModel)]="user">
+            <ion-segment-button value="info">
+              Account Info
+            </ion-segment-button>
+            <ion-segment-button value="settings">
+              Account Settings
+            </ion-segment-button>
+          </ion-segment>
+    </ion-toolbar>
+
+  </ion-header>
+
+
+
+<ion-content id="app">
+
+    <div [ngSwitch]="user">
+
+    <ion-list *ngSwitchCase="'info'">
+          
+        <form method="post" enctype="multipart/form-data" name="profile">
+          <ion-item clear>
+            <ion-label floating>FullName</ion-label>
+            <ion-input type="text" [(ngModel)]="data.fullname" name="fullname" required="true"></ion-input>
+          </ion-item>
+
+          <ion-item clear style="padding-top:30px;">
+              <ion-label>Date of Birth</ion-label>
+              <ion-input type="date" [(ngModel)]="data.dob" name="dob" required="true"></ion-input>
+          </ion-item>
+
+          <ion-item clear>
+              <ion-label floating>Telephone</ion-label>
+              <ion-input type="tel" [(ngModel)]="data.telephone" name="telephone"></ion-input>
+          </ion-item>
+
+          <ion-item clear>
+              <ion-label floating>Email</ion-label>
+              <ion-input type="email" [(ngModel)]="data.email" name="email"></ion-input>
+          </ion-item>
+
+
+          <ion-item clear>
+              <ion-label floating>Occupation</ion-label>
+              <ion-input type="text" [(ngModel)]="data.occupation" name="occupation"></ion-input>
+          </ion-item>
+
+          <ion-item clear>
+              <ion-label floating>Home Address</ion-label>
+              <ion-input type="text" [(ngModel)]="data.address" name="address" required="true"></ion-input>
+            </ion-item>
+
+          <ion-item style="padding-top:20px;">
+              <ion-label (click)="$visible = true" *ngIf="$visible == false">
+                <ion-icon name="add"></ion-icon> &nbsp; Change profile picture </ion-label>
+              <ion-input type="file" capture="camera" [(ngModel)]="data.avatar" name="avatar" *ngIf="$visible == true"></ion-input>
+          </ion-item>
+
+          <ion-item padding>
+            <button ion-button block (click)="updateProfile(data)" color="danger">
+                Update Profile &nbsp; <ion-icon name="ios-arrow-forward"></ion-icon>
+            </button>
+          </ion-item>
+        </form>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'settings'">
+        
+        <form method="post" name="settings">
+          <ion-item clear>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="data.username" name="username" required="true"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="data.password" required="true" name="password"></ion-input>
+          </ion-item>
+  
+          <ion-item padding>
+            <button ion-button block (click)="updateSettings(data)" color="danger">
+              Update Account  &nbsp; <ion-icon name="ios-arrow-forward"></ion-icon>
+            </button>
+          </ion-item>
+        </form>
+    </ion-list>
+
+    </div>
+</ion-content>
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+      <ion-grid style="background:transparent; color:#fff;" >
+        <ion-row>
+          <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+              <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-navbar>
+  </ion-footer>

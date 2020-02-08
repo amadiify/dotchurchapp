@@ -1,0 +1,82 @@
+<ion-header id="header">
+
+    <ion-navbar>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">{{program}}</span>
+                </ion-title>
+
+            </ion-item>
+        </ion-list>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id="app">
+    <ion-list padding>
+        <div>
+
+            <ion-item style="border:none; margin-left:-10px; margin-bottom:-10px;">
+                <img [src]="logo" class="logoLogin" style="width:85px; height:120px; margin-bottom:0px;" item-start>
+
+                <div class="header-info">
+                    <h3>Manually add</h3>
+                    <h1>Attendance </h1>
+                </div>
+            </ion-item>
+
+            <ion-item clear>
+                <ion-label floating>Men</ion-label>
+                <ion-input type="text" [(ngModel)]="data.men" name="title"></ion-input>
+            </ion-item>
+
+            <ion-item clear>
+                <ion-label floating>Women</ion-label>
+                <ion-input type="text" [(ngModel)]="data.women" name="women"></ion-input>
+            </ion-item>
+
+            <ion-item clear>
+                <ion-label floating>Children</ion-label>
+                <ion-input type="text" [(ngModel)]="data.children" name="children"></ion-input>
+            </ion-item>
+
+            <ion-item clear>
+                <ion-label floating>Pastors</ion-label>
+                <ion-input type="text" [(ngModel)]="data.pastors" name="pastors"></ion-input>
+            </ion-item>
+
+
+            <ion-item clear>
+                <ion-label floating>Ministers</ion-label>
+                <ion-input type="text" [(ngModel)]="data.ministers" name="ministers" required="true"></ion-input>
+            </ion-item>
+
+
+        </div>
+
+        <ion-item style="border-bottom:none; background:none;">
+            <div class="col-90" style="margin-left:-4%;">
+                <button style="background:#f00; padding:20px;" ion-button block (click)='register(data)'>Submit &nbsp; &nbsp; <ion-icon name="ios-arrow-round-forward" style="font-size:23px;"></ion-icon> </button>
+            </div>
+
+
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+            </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>

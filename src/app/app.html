@@ -1,0 +1,31 @@
+<ion-menu [content]="content">
+
+<ion-header>
+    <ion-toolbar>
+    <ion-title>
+        <button icon-only ion-button clear (click)="closeMenu()">
+        <ion-icon name="close" style="color: #000;
+        font-size: 2.2rem;
+        opacity: 1;
+        background: #f00;
+        height: 30px;
+        padding: 7px;
+        width: 30px;
+        position: relative;" ></ion-icon>
+        </button>
+    </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+    <button ion-item *ngFor="let p of rootPage.appPages" (click)="openPage(p)">
+        {{p.title}}
+    </button>
+    </ion-list>
+</ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>
+      

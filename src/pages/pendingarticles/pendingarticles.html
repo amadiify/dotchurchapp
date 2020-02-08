@@ -1,0 +1,82 @@
+<ion-header id="header">
+    <ion-navbar>
+      <ion-list>
+        <ion-item no-border style="background:none;">
+            <button ion-button icon-only clear (click)="goback()" item-start>
+                <ion-icon name="ios-arrow-round-back" style="color:#fff; font-size:35px; opacity:1; font-weight:bold;"></ion-icon>
+            </button>
+   
+           <ion-title>
+               <span style="color:#fff; font-size:16px !important">Library</span>
+           </ion-title>
+
+           <ion-avatar item-end>
+              <img [src]="avatar" class="avatar">
+           </ion-avatar>
+           
+        </ion-item>
+      </ion-list>
+        
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content id="app">
+
+      <!-- <div *ngIf="empty == false">
+        <ion-card *ngFor="let article of articles">
+    
+            <ion-item>
+                <ion-avatar item-start>
+                    <img [src]="image + article.member.avatar">
+                </ion-avatar>
+        
+                <h2> {{ article.member.fullname }}</h2>
+               
+            </ion-item>
+    
+            <img [src] = "image + article.articleimage" item-full-image>
+    
+            <ion-card-content>
+                <ion-card-title> {{ article.articletopic }} </ion-card-title>
+                <p>{{ article.article }}</p>
+    
+                <button item-end ion-button clear (click)="approve(article.articleid)">
+                  <ion-icon name="checkmark" style="color:#090"></ion-icon> 
+                  <small> &nbsp; Approve </small>
+                </button>
+    
+            </ion-card-content>
+        </ion-card>
+      </div>
+    
+      <div *ngIf="empty == true">
+          <ion-card>
+            <ion-card-content>
+              <p><ion-icon name="info"></ion-icon> No article awaiting approval.</p>
+            </ion-card-content>
+          </ion-card>
+      </div> -->
+
+      <div class="grid-box">
+          <div class="bix" (click)="library('video')"><span><ion-icon name="film" id="icon"></ion-icon><br> Videos</span></div>
+          <div class="bix" (click)="library('audio')"><span><ion-icon name="headset" id="icon"></ion-icon><br> Audios</span></div>
+          <div class="bix" (click)="library('newsletters')"><span><ion-icon name="paper" id="icon"></ion-icon><br> Newsletter</span></div>
+          <div class="bix" (click)="library('books')"><span><ion-icon name="book" id="icon"></ion-icon><br> Books</span></div>
+      </div>
+    
+  </ion-content>
+
+<ion-footer>
+    <ion-navbar no-padding>
+      <ion-grid style="background: transparent; color:#fff;" >
+        <ion-row>
+          <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+              <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-navbar>
+  </ion-footer>

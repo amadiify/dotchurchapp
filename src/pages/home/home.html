@@ -1,0 +1,40 @@
+<ion-content no-padding id="home">
+
+    <ion-slides pager>
+
+        <ion-slide class="slide1">
+            <img [src]="logo" class="imgcenter" style="width:100px; height:140px; margin-bottom:0px;">
+            <h3 padding style="font-weight: normal;
+        margin-top: -39px;
+        font-size: 1.2rem;
+        text-transform: uppercase; color:#fff;
+        font-family:'Montserrat'
+        ">Dot Church</h3>
+
+
+        </ion-slide>
+
+        <ion-slide class="slide2" padding>
+
+            <div class="contain-content">
+                <h3>We help you connect to your church</h3>
+                <h1>from anywhere.</h1>
+
+                <br>
+                <div class="col-30" style="margin-left:4%;">
+                    <button style="background:#f00; padding:20px; position: relative;
+            left: -12px;
+            top: -8px;" ion-button (click)='loginpage()'>Get connected &nbsp; &nbsp; <ion-icon name="ios-arrow-round-forward" style="font-size:23px;"></ion-icon> </button>
+                </div>
+                <span class="foote">
+                Not registered yet ?<a href="javascript:void(0)" (click)="register()" class="foot-link" style="text-align:center;"
+                >Join us</a>  
+        </span>
+
+            </div>
+
+        </ion-slide>
+
+    </ion-slides>
+
+</ion-content>

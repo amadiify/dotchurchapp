@@ -1,0 +1,161 @@
+<ion-header id="header">
+    <ion-navbar>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">Expenditure</span>
+                </ion-title>
+
+                <ion-avatar item-end>
+                    <img [src]="avatar">
+                </ion-avatar>
+            </ion-item>
+        </ion-list>
+
+    </ion-navbar>
+
+</ion-header>
+
+<style>
+    .item-block {
+        height: 40px;
+        min-height: 51px !important;
+    }
+    
+    .card-md {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: #fff !important;
+        box-shadow: inset 0 0px 0 0 #fff !important;
+    }
+</style>
+
+<ion-content no-padding id="app">
+    <form action="" method="POST" enctype="multipart/form-data" name="expenses">
+
+        <ion-card no-padding>
+            <ion-list style="border:none; margin-top:40px;">
+                <ion-item style="border:none;" *ngIf="department == false">
+
+                    <ion-label style="color:#fff">Choose a Department</ion-label>
+                    <ion-select [(ngModel)]="budget.department" name="department" style="border:2px solid #fff; 
+            height:45px; width:150px; color:#fff;" placeholder="Select" data-at="fda" id="departmenthead">
+                        <span *ngIf="departments.length > 0">
+                        <ion-option *ngFor="let dep of departments" value="{{dep.department || ''}}" id="{{dep.department || ''}}">
+                            {{dep.department}} £{{ minus(dep.allocated, dep.withdrawned) }}
+                        </ion-option>
+            </span>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item style="border:none;" *ngIf="department != false">
+
+                    <ion-label style="color:#fff">Your Department</ion-label>
+                    <ion-select [(ngModel)]="budget.department" name="department" style="border:2px solid #fff; 
+            height:45px; width:150px; color:#000;" placeholder="Select" data-at="fda" id="departmenthead">
+                        <ion-option value="{{ department }}" selected="true" style="color:#000;"> {{ department }} </ion-option>
+                    </ion-select>
+                </ion-item>
+
+            </ion-list>
+        </ion-card>
+
+        <ion-card>
+            <ion-item style="border:none; ">
+                <ion-label style="color:#fff">Amount Collected</ion-label>
+                <ion-input type="text" placeholder="£0.00" style="border:2px solid #fff; height:40px; " name="amount" onfocus="this.value = ''" [(ngModel)]="budget.amount" [ngModelOptions]="{standalone: true}" data-at="fda" id="amount"></ion-input>
+            </ion-item>
+        </ion-card>
+
+        <ion-card>
+            <ion-item style="border:none; ">
+                <ion-label style="color:#fff">Purpose</ion-label>
+                <ion-input type="text" style="border:2px solid #fff; height:40px; " name="purpose" onfocus="this.value = ''" [(ngModel)]="budget.purpose" [ngModelOptions]="{standalone: true}" data-at="fda" id="purpose"></ion-input>
+            </ion-item>
+        </ion-card>
+
+
+        <ion-card>
+            <ion-item style="border:none; ">
+                <ion-label style="color:#fff">Amount Spent</ion-label>
+                <ion-input type="text" placeholder="£0.00" style="border:2px solid #fff; height:40px; " name="spent" onfocus="this.value = ''" [(ngModel)]="budget.spent" [ngModelOptions]="{standalone: true}" data-at="fda" id="amountspent"></ion-input>
+            </ion-item>
+        </ion-card>
+
+
+        <ion-card>
+            <ion-item style="border:none; " *ngIf="budget.spent > 0 && budget.amount > 0">
+                <ion-label style="color:#fff">Balance</ion-label>
+                <ion-input type="text" placeholder="£0" readonly="yes" style="border:2px solid #fff; height:40px; " name="balance" onfocus="this.value = ''" [(ngModel)]="budget.amount - budget.spent" [ngModelOptions]="{standalone: true}" data-at="fda" id="balance"></ion-input>
+            </ion-item>
+        </ion-card>
+
+        <ion-card>
+            <ion-item style="border:none; " *ngIf="budget.spent > 0 && budget.amount > 0">
+                <ion-label style="color:#fff">Budget Balance</ion-label>
+                <ion-input type="text" placeholder="£0" readonly="true" style="border:2px solid #fff; height:40px; " name="budgetbalance" onfocus="this.value = ''" [(ngModel)]="balances[budget.department] - budget.spent" [ngModelOptions]="{standalone: true}" data-at="fda"
+                    id="budgetbalance"></ion-input>
+            </ion-item>
+        </ion-card>
+
+        <ion-card style="overflow: visible;">
+            <ion-item style="border:none; overflow: visible; height: 150px;">
+                <button ion-button (click)="takephoto()" block clear id="camera_btn" style="margin-bottom: 50px; margin-top: 40px">Snap Receipt</button>
+                <button ion-button (click)="selectphoto()" block clear id="camera_btn">Select from libary</button>
+            </ion-item>
+        </ion-card>
+
+        <div align="center"> <img src="{{ myphoto }}" *ngIf="myphoto !== false"> </div>
+
+        <ion-card>
+            <ion-item style="padding-bottom:6px; border:none">
+
+                <button ion-button block (click)="expense()" color="danger" padding style="margin-left: -3%;" id="payment-button">
+                    <ion-icon name="card"></ion-icon> &nbsp; Add Expense
+                </button>
+
+            </ion-item>
+        </ion-card>
+
+    </form>
+
+
+    <!-- <ion-card>
+    <table>
+      <tr>
+        <th>Department</th>
+        <th>Budget</th>
+        <th>Spent</th>
+        <th>Balance</th>
+      </tr>
+
+      <tr *ngFor="let bd of budgets">
+        <td>{{bd.department}}</td>
+        <td>£{{bd.allocated}}</td>
+        <td>£{{bd.withdrawned}}</td>
+        <td>£{{Number(bd.allocated) - Number(bd.withdrawned)}}</td>
+      </tr>
+    </table>
+  </ion-card> -->
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+            </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>

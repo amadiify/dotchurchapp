@@ -1,0 +1,61 @@
+<ion-header id="header">
+    <ion-navbar>
+      <ion-list>
+        <ion-item no-border style="background:none;">    
+            <ion-title>
+                <span style="color:#fff; font-size:16px !important">{{trans.member.fullname}}</span>
+            </ion-title>
+            
+            <ion-avatar item-end>
+              <img [src]="avatar">
+            </ion-avatar>
+        </ion-item>
+      </ion-list>
+        
+    </ion-navbar>
+    </ion-header>
+
+
+<ion-content id="app">
+    <ion-list>
+        <ion-item>
+            <ion-label>Giving Type</ion-label>
+            <div item-end style="color:#fff">{{trans.givingtype}}</div>
+            
+        </ion-item>
+          
+        <ion-item>
+          <ion-label>Amount</ion-label>
+          <div item-end style="color:#fff">${{trans.amount}}</div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Date</ion-label>
+            <div item-end style="color:#fff">{{trans.datetransacted}}</div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Payment Type</ion-label>
+          <span item-end>
+            <ion-thumbnail>
+              <img src="assets/imgs/mastercard.png" style="height:30px; position:relative; top:25px;">
+            </ion-thumbnail>
+          </span>
+        </ion-item>
+
+      </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-navbar no-padding>
+      <ion-grid style="background: transparent; color:#fff;" >
+        <ion-row>
+          <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+              <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-navbar>
+</ion-footer>

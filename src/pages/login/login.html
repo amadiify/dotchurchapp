@@ -1,0 +1,47 @@
+
+
+<ion-content id="loginscreen" style="padding-top:60px;">
+
+    <ion-list padding style="position: absolute; top:10%; width:100%;">
+
+        <ion-item style="border:none; margin-left:-10px; margin-bottom:10px;">
+            <img [src]="logo" class="logoLogin" 
+            style="width:90px; height:125px; margin-bottom:0px;" item-start>
+
+            <div class="header-info">
+              <h3>Account Login</h3>
+              <h1>Just one click <br> away</h1>
+            </div>
+        </ion-item>
+        
+
+          <ion-item item-input ion-icon icon-left style="background:none;">
+            <ion-icon name="person" style="color: #f00;"></ion-icon>
+            <ion-input type="text" [(ngModel)]="user.username" placeholder="Username"></ion-input>
+          </ion-item>
+
+          <ion-item item-input ion-icon icon-left style="background:none;">
+            <ion-icon name="key"></ion-icon>
+            <ion-input type="password" [(ngModel)]="user.password" placeholder="Password"> </ion-input>
+          </ion-item>
+
+          <ion-item style="background:none; border:none;">
+            <div class="col-90">
+                <button style="background:#f00; padding: 20px;
+                width: 100px;
+                margin: 0 auto;
+                display: block;" ion-button (click)='loginpin()'>Login &nbsp; &nbsp; <ion-icon name="ios-arrow-round-forward" style="font-size:23px;"></ion-icon> </button>
+            </div>
+            
+            <span class="foote" style="text-align:center; margin-top:20px;">
+                Not registered yet ?<a href="javascript:void(0)" (click)="register()" class="foot-link" style="text-align:center;"
+                >Join us</a>|<a href="javascript:void(0)" (click)="forget()" class="foot-link" style="text-align:center; text-decoration: none;
+"
+                >Forget?</a>  
+            </span>
+              
+          </ion-item>
+
+        </ion-list>
+
+</ion-content>

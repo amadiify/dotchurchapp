@@ -1,0 +1,447 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border-bottom-color: none !important;
+    -webkit-box-shadow: inset 0 0px 0 0 #32db64 !important;
+    box-shadow: inset 0 0px 0 0 #32db64 !important;
+    border: none !important;
+}
+
+.content-ios {
+    color: #fff;
+    background-image: url('../assets/imgs/Blackdot.jpg');
+    background-color: #000;
+    border-color: none !important;
+}
+
+.content-ios .card-ios {
+    background: transparent !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) #header {
+    margin-top: 5px;
+}
+
+$toolbar-ios-background: transparent;
+.toolbar-background-ios {
+    background: transparent !important;
+    border-color: none !important;
+}
+
+.header-ios::after,
+.tabs-ios[tabsPlacement="top"]>.tabbar::after,
+.footer-ios::before,
+.tabs-ios[tabsPlacement="bottom"]>.tabbar::before {
+    background-image: none !important;
+    border: none;
+}
+
+.button-ios {
+    -webkit-box-shadow: 0px 0px 0px transparent;
+    box-shadow: 0px 0px 0px transparent;
+}
+
+.item-ios {
+    background-color: transparent;
+    border: 0px solid transparent !important;
+}
+
+#navbar .item-ios {
+    background: transparent !important;
+    border: none;
+    padding-left: 40px;
+}
+
+.item-ios #topText {
+    position: relative;
+    top: 3px;
+}
+
+.bar-button-default-ios {
+    color: #fff !important;
+    position: relative;
+    top: -13px;
+}
+
+.back-button-icon-ios {
+    color: #fff !important;
+}
+
+.back-button-ios {
+    position: relative;
+    top: -15px;
+}
+
+.loading-ios .loading-wrapper {
+    border-radius: 2px;
+    max-width: 280px;
+    max-height: 90%;
+    color: white;
+    background: rgba(0, 0, 0, 0.7) !important;
+    -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+    padding: 24px;
+}
+
+.loading-ios .spinner-crescent circle {
+    stroke: #f00 !important;
+}
+
+.header-ios #menu {
+    position: relative;
+    top: -8px;
+}
+
+#navbar .list-ios {
+    padding-top: 30px;
+}
+
+#home.content-ios {
+    background-size: cover !important;
+}
+
+.content-ios {
+    background-size: cover !important;
+}
+
+.fab-md,
+.fab-ios {
+    color: #fff;
+    background-color: transparent;
+}
+
+.action-sheet-ios .action-sheet-group {
+    background: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    width: 100%;
+    color: #fff;
+}
+
+.action-sheet-ios .action-sheet-group .button-inner {
+    color: #fff !important;
+}
+
+#loginscreen .item-ios {
+    margin-top: 20px;
+}
+
+.footer .toolbar .icon {
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.footer .toolbar .icon:hover {
+    color: #fff !important;
+    opacity: 1;
+}
+
+.button-round button {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 26px;
+    background: #f00;
+    background-color: rgb(255, 0, 0);
+}
+
+.button-round button .icon {
+    color: #000 !important;
+}
+
+#dashboardheader .icon {
+    color: #f00 !important;
+    opacity: 1;
+}
+
+.toolbar-title-md,
+.toolbar-title-ios {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #fff !important;
+}
+
+#sermonsList {
+    border: none;
+    padding: 0px;
+    background: #fff;
+    height: 127px;
+}
+
+#sermonsList img {
+    width: 100%;
+    margin-top: -24px;
+    height: 131px;
+    padding-bottom: 0px;
+    position: absolute;
+}
+
+.menu-inner .label-ios {
+    color: #fff !important;
+}
+
+.menu-inner .list-ios .item-block .item-inner {
+    border: 0px solid #000 !important;
+}
+
+.footer-ios .button-round button {
+    margin-top: -5px;
+}
+
+#sermonsList .item-inner {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.slides-ios .toolbar-title,
+#sermonsList .toolbar-title {
+    padding-left: 25px;
+}
+
+.swiper-pagination-bullet {
+    border-radius: 100%;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: transparent !important;
+    opacity: 1;
+    pointer-events: auto;
+    border: 2px solid #fff !important;
+    padding: 1px !important;
+}
+
+.footer .toolbar .icon {
+    font-size: 20px !important;
+    opacity: 0.8 !important;
+}
+
+.header-ios .toolbar-title-ios {
+    font-size: 2rem;
+}
+
+.header-ios .toolbar-title-ios span {
+    margin-top: -10px;
+    display: block;
+    position: relative;
+    top: -5px;
+    z-index: 99999;
+}
+
+.action-sheet-button-default-ios {
+    background: #000;
+}
+
+.item-cover-ios .item-cover-default .item-cover-default-ios {
+    background: transparent !important;
+}
+
+.reg .item-input .label-ios {
+    color: #fff !important;
+}
+
+.back-button.bar-button.bar-button-ios {
+    margin-left: 10px;
+    position: relative;
+    top: 4px;
+}
+
+#app .item-ios h3,
+.item-ios h4,
+.item-ios h5,
+.item-ios h6 {
+    color: #fff;
+}
+
+.loading-md .loading-wrapper,
+.loading-ios .loading-wrapper {
+    border-radius: 0px;
+    max-width: 280px;
+    max-height: 90%;
+    color: #fff;
+    background: transparent !important;
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.4);
+    padding: 24px;
+}
+
+.loading-md .spinner-crescent circle {
+    stroke: #f00;
+}
+
+.loading-ios .spinner-crescent circle {
+    stroke: #f00 !important;
+}
+
+#app .label-ios {
+    color: #fff !important;
+}
+
+.segment-ios .segment-button.activated,
+.segment-ios .segment-button.segment-activated {
+    background: #f00;
+    border-color: #f00;
+}
+
+.segment-ios .segment-button {
+    color: #fff;
+    border-color: #f00;
+}
+
+.icon.icon-ios.ion-ios-close {
+    display: none;
+}
+
+.button-ios-danger {
+    background-color: #f00;
+    padding: 14px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.header .toolbar-title-ios {
+    overflow: visible;
+    height: auto;
+    position: relative;
+    z-index: 99;
+    top: -15px;
+}
+
+.back-button.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md {
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+.back-button.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios {
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+.card-ios p {
+    color: #fff;
+}
+
+.card-ios h2 {
+    color: #fff;
+}
+
+.alert-md .alert-wrapper,
+.alert-ios .alert-wrapper {
+    background-color: #000;
+}
+
+.alert-md .alert-title,
+.alert-ios .alert-title {
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    margin-bottom: -14px;
+}
+
+.button-effect {
+    background-color: #fff;
+}
+
+.alert-md [aria-checked="true"] .alert-radio-icon,
+.alert-ios [aria-checked="true"] .alert-radio-icon {
+    border-color: #f00;
+}
+
+.alert-md .alert-radio-icon,
+.alert-ios .alert-radio-icon {
+    border-color: #fff;
+}
+
+.alert-md .alert-radio-label,
+.alert-ios .alert-radio-label {
+    color: #fff;
+}
+
+.alert-md [aria-checked="true"] .alert-radio-label,
+.alert-ios [aria-checked="true"] .alert-radio-label {
+    color: #f00;
+}
+
+.alert-md .alert-radio-inner,
+.alert-ios .alert-radio-inner {
+    background-color: #f00;
+}
+
+.alert-md .alert-button,
+.alert-ios .alert-button {
+    color: #fff;
+}
+
+.card-title-ios {
+    color: #fff;
+}
+
+.select-text {
+    color: #fff;
+}
+
+.alert-md .alert-sub-title {
+    font-size: 14px;
+    margin-top: 37px;
+    color: #fff;
+}
+
+.alert-ios .alert-sub-title {
+    font-size: 14px;
+    margin-top: 37px;
+    color: #fff;
+}
+
+#camera_btn {
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+    margin-left: 0px !important;
+    margin-bottom: 30px !important;
+    height: 60px !important;
+}
+
+#homslide .pages[_ngcontent-c0] img[_ngcontent-c0] {
+    height: 100%;
+    width: 100%;
+}
+
+#homslide .swiper-slide img {
+    width: auto;
+    width: 100%;
+    height: auto;
+    height: 100%;
+}
+
+#homslide .swiper-slide {
+    width: 100% !important;
+}
+
+#homslide .card-title-md,
+#homslide .card-title-ios {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    color: #fff;
+    left: 0;
+    text-align: center;
+}
+
+@media only screen and (max-height: 800px) {
+    #homslide {}
+}

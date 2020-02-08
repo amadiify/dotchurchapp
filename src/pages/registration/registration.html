@@ -1,0 +1,150 @@
+<ion-header id="header" class="header-c">
+
+    <ion-navbar style="color:#fff; font-style:'Montserrat'">
+        <ion-title>
+            <span style="color:#fff; font-size:16px !important">
+        <span *ngIf="addprofile"></span>
+            <span *ngIf="addprofile == false" style="color:#fff;"></span> Create your account
+            </span>
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content class="loginscreen reg" id="loginscreen">
+    <ion-list padding>
+
+        <ion-item style="border:none; margin-left:-10px; margin-bottom:-10px;">
+            <img [src]="logo" class="logoLogin" style="width:85px; height:120px; margin-bottom:0px;" item-start>
+
+            <div class="header-info">
+                <h3>Hello! Welcome</h3>
+                <h1>Just one step <br> away </h1>
+            </div>
+        </ion-item>
+
+        <div *ngIf="addprofile == false && complete == false">
+
+            <ion-item clear>
+                <ion-label floating style="color:#fff;">Select your church </ion-label>
+                <ion-select [(ngModel)]="data.churchid">
+                    <ion-option *ngFor="let ch of churches" value="{{ch.churchid}}">{{ch.churchname}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <div>
+                <ion-item clear>
+                    <ion-label floating>Fullname</ion-label>
+                    <ion-input type="text" [(ngModel)]="data.fullname" name="fullname"></ion-input>
+                </ion-item>
+
+                <!-- <ion-item clear>
+              <ion-label floating>Telephone</ion-label>
+              <ion-input type="tel" [(ngModel)]="data.telephone" name="telephone"></ion-input>
+          </ion-item> -->
+
+                <ion-item clear>
+                    <ion-label floating>Email</ion-label>
+                    <ion-input type="email" [(ngModel)]="data.email" name="email"></ion-input>
+                </ion-item>
+
+
+                <ion-item clear>
+                    <ion-label floating>Occupation</ion-label>
+                    <ion-input type="text" [(ngModel)]="data.occupation" name="occupation" placeholder="(Optional)" id="occupation"></ion-input>
+                </ion-item>
+
+
+                <!-- <ion-item clear>
+                <ion-label floating>Address</ion-label>
+                <ion-input type="text" [(ngModel)]="data.address" name="address" required="true"></ion-input>
+                </ion-item> -->
+
+                <ion-item clear>
+                    <ion-label floating style="color:#fff;">Gender (Optional) </ion-label>
+                    <ion-select [(ngModel)]="data.gender">
+                        <ion-option value="" selected>--Please Select--</ion-option>
+                        <ion-option value="male">Male</ion-option>
+                        <ion-option value="female">Female</ion-option>
+                    </ion-select>
+                </ion-item>
+
+            </div>
+
+            <ion-item style="border-bottom:none; background:none;">
+                <div class="col-90" style="margin-left:27%;">
+                    <button style="background:#f00; padding:20px;" ion-button (click)='register(data)'>Continue &nbsp; &nbsp; <ion-icon name="ios-arrow-round-forward" style="font-size:23px;"></ion-icon> </button>
+                </div>
+
+
+            </ion-item>
+
+        </div>
+
+        <div *ngIf="addprofile == true && complete == false">
+
+
+            <div>
+                <ion-item clear>
+                    <ion-label floating>Username</ion-label>
+                    <ion-input type="text" [(ngModel)]="data.username" name="username" required="true"></ion-input>
+                </ion-item>
+
+                <ion-item clear>
+                    <ion-label floating>Password</ion-label>
+                    <ion-input type="password" [(ngModel)]="data.password" name="password"></ion-input>
+                </ion-item>
+
+                <ion-item clear>
+                    <ion-label floating>Memorable PIN</ion-label>
+                    <ion-input type="password" [(ngModel)]="data.pin" name="pin"></ion-input>
+                </ion-item>
+
+                <ion-item clear>
+                    <ion-label floating style="color:#fff;">Are you in a department? </ion-label>
+                    <ion-select [(ngModel)]="data.indepartment" id="indepartment" (ngModelChange)="loadDep($event)">
+                        <ion-option value="yes">Yes</ion-option>
+                        <ion-option value="no" selected>No</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <div *ngIf="data.indepartment == 'yes'">
+                    <ion-item clear>
+                        <ion-label floating style="color:#fff">Please choose department</ion-label>
+                        <ion-select [(ngModel)]="data.department" *ngIf="departmentsnotempty">
+                            <ion-option *ngFor="let dp of departments" value="{{ dp.department }}">{{ dp.department }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+
+                <div *ngIf="data.indepartment == 'yes'">
+                    <ion-item clear>
+                        <ion-label floating style="color:#fff">Position</ion-label>
+                        <ion-select [(ngModel)]="data.position">
+                            <ion-option value="member" selected>Member</ion-option>
+                            <ion-option value="pastor">Pastor</ion-option>
+                            <ion-option value="admin">Church Admin</ion-option>
+                            <ion-option value="usher">Ushering</ion-option>
+                            <ion-option value="hod">Head of department</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+            </div>
+
+            <ion-item block clear style="white-space:normal">
+                <p style="color:#fff; word-wrap:break-word; white-space: normal; margin-bottom: 30px; font-size: 12px;">In line with GDPR requirements we seek your permission to use the information you have provided for our church records and other official purposes.</p>
+                <label for="agree" style="padding: 10px; background: rgba(255,255,255,0.1); height: 45px; margin-bottom: 20px; font-weight: normal; display: block;">
+                    <input type="checkbox" name="agree" required="yes" style="transform: scale(1.2);" id="agree"> <span style="color: #fff; padding-left: 20px;">I agree</span>
+                </label>
+            </ion-item>
+
+            <ion-item style="border:none; padding-top:10px; background:none;">
+                <div class="col-90" style="margin-left:27%;">
+                    <button style="background:#f00; padding:20px;" ion-button (click)='completeReg(data)'>Register &nbsp; &nbsp; <ion-icon name="ios-arrow-round-forward" style="font-size:23px;"></ion-icon> </button>
+                </div>
+            </ion-item>
+
+        </div>
+
+    </ion-list>
+</ion-content>

@@ -1,0 +1,113 @@
+<ion-header id="header">
+    <ion-navbar>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">Income</span>
+                </ion-title>
+
+                <ion-avatar item-end>
+                    <img [src]="avatar">
+                </ion-avatar>
+            </ion-item>
+        </ion-list>
+
+    </ion-navbar>
+
+</ion-header>
+
+<style>
+    .item-block {
+        height: 40px;
+        min-height: 51px !important;
+    }
+    
+    .card-md {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: #fff !important;
+        box-shadow: inset 0 0px 0 0 #fff !important;
+    }
+</style>
+
+<ion-content no-padding id="app">
+
+    <ion-card no-padding>
+        <ion-list style="border:none; margin-top:40px;">
+            <ion-item style="border:none;">
+                <ion-label style="color:#fff">Offering & Tithe</ion-label>
+                <ion-input [(ngModel)]="income.total" style="border:2px solid #fff; height:40px; "></ion-input>
+            </ion-item>
+
+        </ion-list>
+    </ion-card>
+
+    <ion-card>
+        <ion-item style="border:none; ">
+            <ion-label style="color:#fff">HMRC</ion-label>
+            <ion-input type="text" placeholder="£0.00" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="income.hmrc" [ngModelOptions]="{standalone: true}" data-at="fda"></ion-input>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item style="border:none; ">
+            <ion-label style="color:#fff">Others</ion-label>
+            <ion-input type="text" placeholder="£0.00" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="income.others" [ngModelOptions]="{standalone: true}" data-at="fda"></ion-input>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+
+
+        <ion-item style="padding-bottom:6px; border:none">
+
+            <button ion-button block (click)="addincome()" color="danger" padding style="margin-left: -3%;">
+              <ion-icon name="card"></ion-icon> &nbsp; Add Income
+            </button>
+
+        </ion-item>
+
+    </ion-card>
+
+
+    <ion-card>
+        <table>
+            <tr>
+                <th>Tithe & Offering</th>
+                <th>HMRC</th>
+                <th>Others</th>
+                <th>Sum</th>
+            </tr>
+
+            <tbody *ngIf="incomes">
+                <tr *ngFor="let inc of incomes">
+                    <td>£{{inc.titheoffering || 0}}</td>
+                    <td>£{{inc.hmrc || 0}}</td>
+                    <td>£{{inc.others || 0}}</td>
+                    <td>£{{sum(inc.others || 0, inc.hmrc || 0, inc.titheoffering || 0)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ion-card>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>

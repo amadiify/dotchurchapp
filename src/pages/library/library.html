@@ -1,0 +1,116 @@
+<ion-header id="header" no-shadow no-border>
+    <ion-navbar hideBackButton>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+                <button ion-button icon-only clear (click)="goback()" item-start>
+              <ion-icon name="ios-arrow-round-back" style="color:#fff; font-size:35px; opacity:1; font-weight:bold;"></ion-icon>
+          </button>
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">{{ ucfirst(page) }}</span>
+                </ion-title>
+
+            </ion-item>
+        </ion-list>
+
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content id="app">
+
+ 	<div *ngIf="page == 'video'">
+ 		<ion-list>
+ 			<ion-item id="item-white" *ngFor="let vid of content">
+			    
+			    <div class="circle">
+			    	<img src="assets/imgs/camera.jpg">
+			    </div>
+			    <h2>{{ vid.localtitle }}
+			    <span class="delete" *ngIf="vid.delin != ''">
+ 					 {{ vid.delin }}
+ 					</span>
+ 				</h2>
+
+			    <div id="video-section">
+			    	<video preload="auto" [src]="vid.localpath"
+                    [poster]="vid.poster" playsinline controls>
+ 					</video>
+			    </div>
+
+			</ion-item>
+ 		</ion-list>
+ 	</div>
+
+
+ 	<div *ngIf="page == 'audio'">
+ 		<ion-list>
+ 			<ion-item *ngFor="let aud of content" id="item-white">
+
+ 				<div class="circle">
+			    	<img src="assets/imgs/v156-tang-01-icons_2.jpg">
+			    </div>
+
+ 				<h2>{{ aud.localtitle }}
+ 					<span class="delete" *ngIf="aud.delin != ''">
+ 						{{ aud.delin }}
+ 					</span>
+ 				</h2>
+
+ 				<div class="full-image">
+ 					<img src="assets/imgs/f8913314a1f8776fc2c7102170276968.jpg">
+ 				</div>
+
+ 				<audio preload controls>
+ 					<source src="{{aud.localpath}}" type="audio/mp3">
+ 				</audio>
+ 			</ion-item>
+ 		</ion-list>
+ 	</div>
+
+
+ 	<div *ngIf="page == 'newsletters' || page == 'books'">
+ 		<ion-list>
+ 			<ion-item *ngFor="let file of content" id="item-white">
+
+ 				<div class="circle">
+			    	<img src="assets/imgs/pdf.png">
+			    </div>
+
+ 				<h2>{{ file.localtitle }}
+ 					<span class="delete" *ngIf="file.delin != ''">
+ 						{{ file.delin }}
+ 					</span>
+ 				</h2>
+
+ 				<div class="full-image" (click)="view(file)">
+ 					<img src="assets/imgs/pdffile.png">
+ 				</div>
+ 			</ion-item>
+ 		</ion-list>
+ 	</div>
+
+ 	<div *ngIf="empty" id="empty">
+ 		<div class="empty-inner">
+ 			<ion-icon name="sad" id="icon"></ion-icon>
+ 			<p>{{ ucfirst(page) }} library is empty! Sorry, please check back later.</p>
+ 		</div>
+ 	</div>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+            </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>
+

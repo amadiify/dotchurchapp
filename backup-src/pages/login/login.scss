@@ -1,0 +1,52 @@
+page-login {
+
+}
+
+#loginscreen{
+    background: url("../assets/imgs/screen2.png");
+    background-repeat: repeat;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-size: auto auto;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+
+.show-page{background: #000;}
+
+
+#loginscreen .scroll-content{background: none; overflow: hidden;}
+#loginscreen .item-md {
+    padding-left: 14px;
+    font-size: 1.4rem;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    margin-bottom: 25px;
+}
+
+#loginscreen .text-input {
+    font-family: 'Montserrat';
+    color: #fff;
+}
+
+#loginscreen input::placeholder{
+    opacity: 1;
+    color: #fff;
+}
+#loginscreen img{ transition: all 0.4s ease-in-out;}
+
+#loginscreen button{border-radius: 0px;
+font-family: 'Montserrat';}
+
+@keyframes alternate{
+    0%{top: 20px; transform: rotate(40deg)}
+    50%{top:0px; transform: rotate(-40deg)}
+    100%{top: 20px; transform: rotate(40deg)}
+}
+
+@keyframes pump{
+    0%{opacity: 0.1;}
+    50%{opacity: 0.5;}
+    100%{opacity: 0.1;}
+}

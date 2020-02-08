@@ -1,0 +1,78 @@
+<ion-header id="header">
+    <ion-navbar>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+                <button ion-button icon-only clear (click)="goback()" item-start *ngIf="showbutton() === true">
+            <ion-icon name="ios-arrow-round-back" style="color:#fff; font-size:35px; opacity:1; font-weight:bold;"></ion-icon>
+          </button>
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">{{ pageTitle }}</span>
+                </ion-title>
+
+            </ion-item>
+        </ion-list>
+
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content id="app">
+
+    <form method="POST" enctype="multipart/form-data" name="articleform">
+        <style>
+            .list-header-md {
+                border: 0px solid #dedede;
+            }
+        </style>
+        <ion-list style="margin-top:50px">
+            <ion-item clear>
+
+
+                <!-- <button ion-button (click)="takevideo()" block clear id="camera_btn">Video</button>
+                <button ion-button (click)="takephoto()" block clear id="camera_btn">Take a Picture</button> -->
+                <button ion-button (click)="selectphoto()" block clear id="camera_btn">Select from libary</button>
+
+                <div align="center"> <img src="{{ myphoto }}" *ngIf="myphoto !== false"> </div>
+                <!-- <div align="center" *ngIf="myvideo">
+                    <video controls>
+                        <source src="({ myvideo })" type="video/mp4">
+                    </video>
+                </div> -->
+
+            </ion-item>
+
+            <ion-item clear>
+                <ion-label floating>Article Title</ion-label>
+                <ion-input name="title" type="text" [(ngModel)]="article.title"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Article</ion-label>
+                <ion-textarea name="article" [(ngModel)]="article.text"></ion-textarea>
+            </ion-item>
+
+            <ion-item padding>
+                <button ion-button block (click)="publish(article)" color="danger">
+            Publish
+          </button>
+            </ion-item>
+        </ion-list>
+    </form>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background:transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+            </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>

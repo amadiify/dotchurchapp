@@ -1,0 +1,116 @@
+<ion-header id="header">
+    <ion-navbar>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+                <button ion-button icon-only clear (click)="goback()" item-start>
+            <ion-icon name="ios-arrow-round-back" style="color:#fff; font-size:35px; opacity:1; font-weight:bold;"></ion-icon>
+          </button>
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">Envelope</span>
+                </ion-title>
+
+            </ion-item>
+        </ion-list>
+
+    </ion-navbar>
+</ion-header>
+
+<style>
+    .item-block {
+        height: 40px;
+        min-height: 51px !important;
+    }
+    
+    .card-md {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: #fff !important;
+        box-shadow: inset 0 0px 0 0 #fff !important;
+    }
+</style>
+
+<ion-content no-padding id="app">
+
+    <ion-card no-padding>
+        <ion-list style="border:none; margin-top:40px;">
+            <ion-item style="border:none;">
+                <ion-label style="color:#fff">Choose Giving type</ion-label>
+                <ion-select [(ngModel)]="envelope.type" style="border:2px solid #fff;
+                height:45px; width:150px; color:#fff;" placeholder="Select">
+                    <ion-option value="tithe">Tithe</ion-option>
+                    <ion-option value="offering">Offering</ion-option>
+                    <ion-option value="other">Other</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item style="border:none" *ngIf="envelope.type == 'other'">
+                <ion-label style="color:#fff">Please specify</ion-label>
+                <ion-input type="text" [(ngModel)]="envelope.specify" style="border:2px solid #fff; height:40px;" placeholder="eg donation..."></ion-input>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+    <ion-card>
+        <ion-item style="border:none; ">
+            <ion-label style="color:#fff">Amount</ion-label>
+            <ion-input type="text" placeholder="£0.00" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="envelope.amount" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-item style=" border:none; padding-bottom:10px; padding-top:5px;">
+            <ion-label style="color:#fff">Claim Gift Aid</ion-label>
+            <ion-select [(ngModel)]="envelope.giftaid" style="border:2px solid #eee;
+        height:45px; position: relative; top:-2px; color: #fff;" placeholder="Select">
+                <ion-option value="yes">Yes</ion-option>
+                <ion-option value="no">No</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item style="border:none; ">
+            <ion-label style="color:#fff"> ID no. </ion-label>
+            <ion-input type="text" placeholder="" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="envelope.idno" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+
+        <small style="display:block; padding:10px; text-align:center; font-size: 1.2rem;">Please note that this transaction would be processed by an external payment processor. Thank you
+            God bless.
+          </small>
+
+        <ion-item style="padding-bottom:6px; border:none">
+
+            <button ion-button block (click)="processPayment(envelope)" color="danger" padding style="padding-left: 10px;">
+              <ion-icon name="card"></ion-icon> &nbsp; Connect to Processor
+            </button>
+
+        </ion-item>
+
+        <!-- <ion-item style="border-bottom:none; margin-top:2px; padding-bottom:30px;">
+            <img src="assets/imgs/visa-mastercard-amex.png" style="height:30px; width:200px;
+          display:block; margin:auto;">
+          </ion-item> -->
+
+    </ion-card>
+
+</ion-content>
+
+
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>

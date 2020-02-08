@@ -1,0 +1,15 @@
+page-pendingarticles {
+    .card-md p {
+        margin: 0 0 2px;
+        font-size: 1.4rem;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #fff;
+    }
+
+    .grid-box{display:grid; grid-template-columns:1fr 1fr; grid-gap:10px;
+    padding:15px; margin-top:40px;}
+    .bix{background-color:rgba(0,0,0,0.5); height:150px; display:flex; text-align:center; border:1px solid rgba(255,255,255,0.2);}
+    .bix #icon{font-size:40px; padding-bottom:5px; color:#fff;}
+    .bix span{display:inline-block; font-size:16px; margin:auto;}
+}

@@ -1,0 +1,54 @@
+page-home {
+
+}
+
+@font-face{
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/Montserrat-Regular.otf');
+}
+
+.scroll-content{
+    background: #000;
+}
+
+.contain-content{
+    position: relative;
+    top: 120px;
+}
+.slide2 h3{text-transform: uppercase; font-family: 'Montserrat';
+font-size: 1.2rem; color: #fff; margin: 0;}
+.slide2 h1{color: #fff; text-transform: uppercase; font-size: 30px;
+margin: 0;}
+.slide-zoom{text-align: left;}
+.slide1 h3{text-align: center;}
+.slide1 img{display: block; margin: auto;
+    animation-name: alternate; animation-delay: 0s; animation-duration: 2s; animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;}
+.contain-content button{border-radius: 0px; display: block;}
+
+.foote{
+    color:#fff; font-family:'Montserrat'; font-style:italic; font-size:1.2rem;
+    display:block;
+    text-align: left;
+    position: relative;
+    top: 10px;
+    height: 90px;
+}
+
+.slide1{background: url('../assets/imgs/screen2.png') no-repeat; background-size:cover; }
+.slide2{background: url('../assets/imgs/screen5.png') no-repeat; 
+    background-size:cover; background-position: top;}
+.slide3{background: url('') no-repeat; background-size:cover;}
+
+#home .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    left: 0;
+    bottom: 47px;
+    width: 100%;
+}
+
+.header-info{}
+.header-info h3{color: #fff; text-transform: uppercase; 
+font-family: 'Montserrat'; display: block;
+font-size: 1.2rem; padding-top: 10px; }
+.header-info h1{color: #fff; font-weight: bold; text-transform: uppercase;
+word-wrap: break-word; font-size: 1.8rem;}

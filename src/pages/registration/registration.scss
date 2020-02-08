@@ -1,0 +1,10 @@
+page-registration {
+	
+	#occupation > input::placeholder{text-align:right; font-size:0.8em;}
+}
+.reg .scroll-content{overflow: auto !important;}
+.reg .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+    color: #fff;
+    font-family: 'Montserrat';
+    font-size: 1.2rem;
+}

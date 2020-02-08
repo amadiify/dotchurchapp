@@ -1,0 +1,68 @@
+<ion-header id="header">
+    <ion-navbar>
+        <ion-list>
+            <ion-item no-border style="background:none;">
+                <button ion-button icon-only clear (click)="goback()" item-start>
+                <ion-icon name="ios-arrow-round-back" style="color:#fff; font-size:35px; opacity:1; font-weight:bold;"></ion-icon>
+            </button>
+
+                <ion-title>
+                    <span style="color:#fff; font-size:16px !important">{{program.program}}</span>
+                </ion-title>
+
+                <ion-avatar item-end>
+                    <img [src]="avatar">
+                </ion-avatar>
+            </ion-item>
+        </ion-list>
+
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content id="app">
+    <div style="width:100%;" *ngIf="role != 'hod'">
+        <button ion-button color="danger" (click)="addinfo()" style="display:block;
+    width:200px; margin:0 auto;">
+      Take Record &nbsp; <ion-icon name="ios-plus"></ion-icon>
+        </button>
+    </div>
+
+    <ion-list>
+        <ion-item *ngFor="let mem of members">
+            <ion-avatar item-start>
+                <img [src]="defaultImage">
+            </ion-avatar>
+            <h3>{{ mem.fullname }}</h3>
+            <span item-end>
+              <button icon-only ion-button clear button-outline (click)="attend(mem, program.program)">
+                <ion-icon name="ios-checkmark-circle-outline" style="color:#fff; font-size:2rem"></ion-icon>
+              </button>
+            </span>
+
+        </ion-item>
+
+        <div style="position:fixed; left:0; bottom:17%; width:100%;" >
+            <button ion-button color="danger" (click)="viewinfo(info)" style="display:block;
+          width:200px; margin:0 auto;">
+            Attendance info &nbsp; <ion-icon name="ios-arrow-forward"></ion-icon>
+          </button>
+        </div>
+    </ion-list>
+</ion-content>
+
+
+<ion-footer>
+    <ion-navbar no-padding>
+        <ion-grid style="background: transparent; color:#fff;">
+            <ion-row>
+                <ion-col *ngFor="let foot of footer" class="col col-{{foot.col}} text-{{foot.cstyle}} {{foot.cclass}}">
+                    <button icon-only ion-button clear color="dark" (click)="footerCtrl.navigate(foot.clickA)">
+                  <ion-icon name="{{foot.iconName}}" style="color:#fff"></ion-icon>
+              </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-navbar>
+</ion-footer>
