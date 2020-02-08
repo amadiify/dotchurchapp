@@ -19,8 +19,8 @@ import {MyarticlesPage} from '../pages/myarticles/myarticles';
 import {FirstTimersPage} from '../pages/first-timers/first-timers';
 import {BudgetsPage} from '../pages/budgets/budgets';
 
-var app_url = "http://localhost:8888/2018-works/myworks/dotweb/";
-//var app_url = "https://www.dotchurch.co.uk/";
+//var app_url = "http://localhost:8888/2018-works/myworks/dotweb/";
+var app_url = "https://www.dotchurch.co.uk/";
 
 @Component({
 	templateUrl: 'app.html'
