@@ -31,6 +31,8 @@ export class TitheofferingPage {
     tithes : number = 0;
     offerings : number = 0;
     thanksgiving : number = 0;
+    options : any = 'view';
+    envelope : any = {};
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -84,4 +86,8 @@ export class TitheofferingPage {
     ionViewDidLoad() {
     }
 
+    processDonation(envelope:any)
+    {
+        
+    }
 }

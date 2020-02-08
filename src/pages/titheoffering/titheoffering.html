@@ -14,61 +14,130 @@
   </ion-list>
     
 </ion-navbar>
+
+<ion-toolbar no-border-top id="toolbar">
+  <ion-segment [(ngModel)]="options">
+      <ion-segment-button value="view">
+        View Donations
+      </ion-segment-button>
+      <ion-segment-button value="input">
+          Input Donations
+      </ion-segment-button>
+    </ion-segment>
+</ion-toolbar>
+
 </ion-header>
 
 
 <ion-content id="app">
 
-    <ion-list>
-      <ion-item no-border id="table">
-          <ion-grid>
-             <ion-row class="table-header">
-                <ion-col>
-                  Date
-                </ion-col>
-
-                <ion-col>
-                   Giving
-                </ion-col>
-
-                <ion-col>
-                  Record
-                </ion-col>
-             </ion-row>
-
-             <ion-row class="table-row">
-               <ion-col>{{today}}</ion-col>
-               <ion-col>Tithe</ion-col>
-               <ion-col>£{{tithes}}</ion-col>
-             </ion-row>
-
-             <ion-row class="table-row">
-                <ion-col>{{today}}</ion-col>
-                <ion-col>Offerings</ion-col>
-                <ion-col>£{{offerings}}</ion-col>
-              </ion-row>
-
-              <ion-row class="table-row">
-                <ion-col>{{today}}</ion-col>
-                <ion-col>Thanksgiving</ion-col>
-                <ion-col>£{{thanksgiving}}</ion-col>
-              </ion-row>
-
-              <ion-row class="table-row">
+  <div [ngSwitch]="options">
+    <ion-list *ngSwitchCase="'view'">
+      <ion-list style="border:none; margin-top:-90px;">
+        <ion-item no-border id="table">
+            <ion-grid>
+               <ion-row class="table-header">
+                  <ion-col>
+                    Date
+                  </ion-col>
+  
+                  <ion-col>
+                     Giving
+                  </ion-col>
+  
+                  <ion-col>
+                    Record
+                  </ion-col>
+               </ion-row>
+  
+               <ion-row class="table-row">
+                 <ion-col>{{today}}</ion-col>
+                 <ion-col>Tithe</ion-col>
+                 <ion-col>£{{tithes}}</ion-col>
+               </ion-row>
+  
+               <ion-row class="table-row">
                   <ion-col>{{today}}</ion-col>
-                  <ion-col>Other</ion-col>
-                  <ion-col>£{{gifts}}</ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col></ion-col>
-                <ion-col></ion-col>
-                <ion-col class="table-total">£{{total}}</ion-col>
-              </ion-row>
-          </ion-grid>  
-      </ion-item>
-
+                  <ion-col>Offerings</ion-col>
+                  <ion-col>£{{offerings}}</ion-col>
+                </ion-row>
+  
+                <ion-row class="table-row">
+                  <ion-col>{{today}}</ion-col>
+                  <ion-col>Thanksgiving</ion-col>
+                  <ion-col>£{{thanksgiving}}</ion-col>
+                </ion-row>
+  
+                <ion-row class="table-row">
+                    <ion-col>{{today}}</ion-col>
+                    <ion-col>Other</ion-col>
+                    <ion-col>£{{gifts}}</ion-col>
+                </ion-row>
+  
+                <ion-row>
+                  <ion-col></ion-col>
+                  <ion-col></ion-col>
+                  <ion-col class="table-total">£{{total}}</ion-col>
+                </ion-row>
+            </ion-grid>  
+        </ion-item>
+  
+      </ion-list>
     </ion-list>
+
+    <ion-list *ngSwitchCase="'input'">
+      <ion-card no-padding>
+        <ion-list style="border:none; margin-top:40px;">
+            <ion-item style="border:none;">
+                <ion-label style="color:#fff">Choose Donation type</ion-label>
+                <ion-select [(ngModel)]="envelope.type" style="border:2px solid #fff;
+                height:45px; width:150px; color:#fff;" placeholder="Select">
+                    <ion-option value="tithe">Tithe</ion-option>
+                    <ion-option value="offering">Offering</ion-option>
+                    <ion-option value="thanksgiving">Thanksgiving</ion-option>
+                    <ion-option value="other">Other</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item style="border:none" *ngIf="envelope.type == 'other'">
+                <ion-label style="color:#fff">Please specify</ion-label>
+                <ion-input type="text" [(ngModel)]="envelope.specify" style="border:2px solid #fff; height:40px;" placeholder="eg donation..."></ion-input>
+            </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <ion-card>
+          <ion-item style="border:none; ">
+              <ion-label style="color:#fff">Amount</ion-label>
+              <ion-input type="number" min="0" placeholder="£0.00" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''"
+                        (keyup)="numberInputIgnoreLetterE($event)"
+                        [(ngModel)]="envelope.amount" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+      </ion-card>
+
+      <ion-card>
+
+          <ion-item style="border:none; ">
+              <ion-label style="color:#fff"> Date </ion-label>
+              <ion-input type="date" placeholder="" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="envelope.date" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+
+          <ion-item style="padding-bottom:6px; border:none">
+
+              <button ion-button block (click)="processDonation(envelope)" color="danger" padding style="padding-left: 10px;">
+                <ion-icon name="card"></ion-icon> &nbsp; Save
+              </button>
+
+          </ion-item>
+
+          <!-- <ion-item style="border-bottom:none; margin-top:2px; padding-bottom:30px;">
+              <img src="assets/imgs/visa-mastercard-amex.png" style="height:30px; width:200px;
+            display:block; margin:auto;">
+            </ion-item> -->
+
+      </ion-card>
+    </ion-list>
+  </div>
 
 </ion-content>
 

@@ -35,6 +35,7 @@ export class EnvelopePage {
 	clicked: boolean = false;
 	memberid: any;
 	churchid: any;
+	options: any;
 
 	constructor(public navCtrl: NavController,
 	            public navParams: NavParams,
