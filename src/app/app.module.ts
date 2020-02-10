@@ -50,6 +50,9 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
 import {WhatsnewPage} from '../pages/whatsnew/whatsnew';
 import { ResetPage } from '../pages/reset/reset';
 import { File } from '@ionic-native/file';
+import { QrcodepaymentPage } from '../pages/qrcodepayment/qrcodepayment';
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
+
 
 @NgModule({
 	declarations: [
@@ -89,7 +92,8 @@ import { File } from '@ionic-native/file';
 		LoginpinPage,
         LibraryPage,
         WhatsnewPage,
-        ResetPage
+		ResetPage,
+		QrcodepaymentPage
 	],
 	imports: [
 		BrowserModule,
@@ -134,7 +138,8 @@ import { File } from '@ionic-native/file';
 		LoginpinPage,
         LibraryPage,
         WhatsnewPage,
-        ResetPage
+		ResetPage,
+		QrcodepaymentPage
 	],
 	providers: [
 		StatusBar,
@@ -148,7 +153,8 @@ import { File } from '@ionic-native/file';
 		FooterProvider,
 		InAppBrowser,
         DocumentViewer,
-        File
+		File,
+		QRScanner
 	]
 })
 export class AppModule {}

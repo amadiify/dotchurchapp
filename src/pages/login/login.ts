@@ -10,6 +10,7 @@ import { ResetPage } from '../reset/reset';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoginpinPage } from '../loginpin/loginpin';
+import { QrcodepaymentPage } from '../qrcodepayment/qrcodepayment';
 
 @IonicPage()
 @Component({
@@ -248,6 +249,7 @@ export class LoginPage {
               MyApp.session_id = info.memberid;
               MyApp.loggedin_user = info;
               MyApp.notloggedin = false;
+              MyApp.churchid = churchid;
 
               this.storage.set("churchid", churchid);
               this.storage.set("user", info);
@@ -327,6 +329,11 @@ export class LoginPage {
   userinfo(id:Number)
   {
     return this.http.get(MyApp.app_api + 'members/-w userid =' + id).map(res => res.json());
+  }
+
+  qrcode()
+  {
+      this.navCtrl.push(QrcodepaymentPage);
   }
 
   ionViewDidLoad() {

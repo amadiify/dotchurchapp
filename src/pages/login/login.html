@@ -33,11 +33,15 @@
                 display: block;" ion-button (click)='loginpin()'>Login &nbsp; &nbsp; <ion-icon name="ios-arrow-round-forward" style="font-size:23px;"></ion-icon> </button>
             </div>
             
-            <span class="foote" style="text-align:center; margin-top:20px;">
+            <span class="foote" style="text-align:center; margin-top:20px; height: 30px;">
                 Not registered yet ?<a href="javascript:void(0)" (click)="register()" class="foot-link" style="text-align:center;"
                 >Join us</a>|<a href="javascript:void(0)" (click)="forget()" class="foot-link" style="text-align:center; text-decoration: none;
 "
-                >Forget?</a>  
+                >Forget?</a>
+            </span>
+
+            <span style="display: block; margin-top: 20px; text-align: center; position: relative; z-index: 10;">
+              <a href="javascript:void(0)" (click)="qrcode()" style="color: #fff; cursor: pointer;">Scan QRCode to Give</a>
             </span>
               
           </ion-item>

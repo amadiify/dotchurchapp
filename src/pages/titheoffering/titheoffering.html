@@ -110,9 +110,18 @@
           <ion-item style="border:none; ">
               <ion-label style="color:#fff">Amount</ion-label>
               <ion-input type="number" min="0" placeholder="£0.00" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''"
-                        (keyup)="numberInputIgnoreLetterE($event)"
                         [(ngModel)]="envelope.amount" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
+      </ion-card>
+
+      <ion-card *ngIf="programs !== false">
+        <ion-item style="border:none;">
+            <ion-label style="color:#fff">Choose Program</ion-label>
+            <ion-select [(ngModel)]="envelope.programid" style="border:2px solid #fff;
+            height:45px; width:150px; color:#fff;" placeholder="Select">
+                <ion-option *ngFor="let pg of programs" value="{{pg.programid}}">{{pg.program}}</ion-option>
+            </ion-select>
+        </ion-item>
       </ion-card>
 
       <ion-card>

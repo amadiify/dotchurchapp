@@ -110,13 +110,13 @@ export class EnvelopePage {
 
 						var inputs = document.querySelectorAll("input");
 
-						[].forEach.call(inputs, (e) => {
+						[].forEach.call(inputs, (e:any) => {
 							e.value = "";
 						});
 
 						var select = document.querySelectorAll("select");
 
-						[].forEach.call(select, (e) => {
+						[].forEach.call(select, (e:any) => {
 							e.selected = "";
 							e.value = "";
 						});

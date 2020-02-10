@@ -7,6 +7,7 @@ import { MyApp } from '../../app/app.component';
 import { Storage } from '@ionic/storage';
 import { RegistrationPage } from '../registration/registration';
 import { LoginPage } from '../login/login';
+import { QrcodepaymentPage } from '../qrcodepayment/qrcodepayment';
 
 @Component({
   selector: 'page-home',
@@ -75,15 +76,14 @@ export class HomePage {
                 this.navCtrl.push(RegistrationPage);
               }
             }
-            // ,
-            // {
-            //   text: "Do Nothing",
-            //   role:"new",
-            //   handler: () => {
-            //     this.firstTime = true;
-            //     this.storage.clear();
-            //   }
-            // }
+            ,
+            {
+              text: "Scan QRCode to Give",
+              role:"quick-giving",
+              handler: () => {
+                this.navCtrl.push(QrcodepaymentPage);
+              }
+            }
           ]
         }).present();
   

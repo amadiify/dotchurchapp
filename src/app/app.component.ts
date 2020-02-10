@@ -43,6 +43,7 @@ export class MyApp {
 	static appurl = app_url;
 	static newArticle: boolean = false;
 	static document_url : string = app_url + '/application/public/assets/document/';
+	static churchid = 0;
 
 
 	constructor(

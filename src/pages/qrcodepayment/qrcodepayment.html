@@ -1,0 +1,107 @@
+
+
+<ion-content style="padding-top:60px;" id="app">
+
+  <ion-list padding style="position: absolute; top:10%; width:100%;">
+
+      <ion-item style="border:none; margin-left:-10px; margin-bottom:10px;">
+          <img [src]="logo" class="logoLogin" 
+          style="width:90px; height:125px; margin-bottom:0px;" item-start>
+
+          <div class="header-info">
+            <h3>Church Giving</h3>
+            <h1 *ngIf="scanned == false">Scan QRCode</h1>
+            <h1 *ngIf="scanned">Please proceed</h1>
+            <p style="font-style: italic;">
+              <a href="javascript:void(0)" style="color: #fff; text-decoration: none;" (click)="gotologin()">login</a> | <a href="javascript:void(0)" style="color: #fff; text-decoration: none;" (click)="gotoregister()">Register</a>
+            </p>
+          </div>
+      </ion-item>
+      
+
+        <ion-item item-input ion-icon icon-left style="background:none; text-align: center; border: none;" *ngIf="scanned == false">
+          <p style="color: #fff; font-size: 14px; margin-bottom: 30px;">Please Scan QRCode to continue</p>
+          <button style="background:#f00; padding: 20px;
+              width: 154px;
+              margin: 0 auto;
+              display: block;" ion-button (click)='scancode()'><ion-icon name="qr-scanner" style="font-size:23px;"></ion-icon> Scan QRCode</button>
+        </ion-item>
+
+        <div *ngIf="scanned">
+          <p>You are giving to {{churchname}}</p>
+          <ion-card no-padding>
+            <ion-list style="border:none; margin-top:10px;">
+                <ion-item style="border:none; padding-left: 0px;">
+                    <ion-label style="color:#fff">Choose Giving type</ion-label>
+                    <ion-select [(ngModel)]="form.type" style="border:2px solid #fff;
+                    height:45px; width:150px; color:#fff;" placeholder="Select">
+                        <ion-option value="tithe">Tithe</ion-option>
+                        <ion-option value="offering">Offering</ion-option>
+                        <ion-option value="thanksgiving">Thanksgiving</ion-option>
+                        <ion-option value="other">Other</ion-option>
+                    </ion-select>
+                </ion-item>
+    
+                <ion-item style="border:none; padding-left: 0px;" *ngIf="form.type == 'other'">
+                    <ion-label style="color:#fff">Please specify</ion-label>
+                    <ion-input type="text" [(ngModel)]="form.specify" style="border:2px solid #fff; height:40px;" placeholder="eg donation..."></ion-input>
+                </ion-item>
+            </ion-list>
+          </ion-card>
+    
+          <ion-card>
+              <ion-item style="border:none; padding-left: 0px;">
+                  <ion-label style="color:#fff">Amount</ion-label>
+                  <ion-input type="number" min="0" placeholder="£0.00" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''"
+                            [(ngModel)]="form.amount" [ngModelOptions]="{standalone: true}"></ion-input>
+              </ion-item>
+          </ion-card>
+      
+          <ion-card>
+              <ion-item style=" border:none; padding-bottom:10px; padding-top:5px; padding-left: 0px;">
+                  <ion-label style="color:#fff">Claim Gift Aid</ion-label>
+                  <ion-select [(ngModel)]="form.giftaid" style="border:2px solid #eee;
+              height:45px; position: relative; top:-2px; color: #fff;" placeholder="Select">
+                      <ion-option value="yes">Yes</ion-option>
+                      <ion-option value="no">No</ion-option>
+                  </ion-select>
+              </ion-item>
+      
+              <ion-item style="border:none; padding-left: 0px;">
+                  <ion-label style="color:#fff"> ID no. </ion-label>
+                  <ion-input type="text" placeholder="" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="form.idno" [ngModelOptions]="{standalone: true}"></ion-input>
+              </ion-item>
+
+              <ion-item style="border:none; padding-left: 0px;">
+                <ion-label style="color:#fff"> Username </ion-label>
+                <ion-input type="text" placeholder="" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="form.username" [ngModelOptions]="{standalone: true}"></ion-input>
+              </ion-item>
+
+              <ion-item style="border:none; padding-left: 0px;">
+                <ion-label style="color:#fff"> Password </ion-label>
+                <ion-input type="password" placeholder="" style="border:2px solid #fff; height:40px; " onfocus="this.value = ''" [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}"></ion-input>
+              </ion-item>
+      
+              <small style="display:block; padding:10px; text-align:center; font-size: 1.2rem;">Please note that this transaction would be processed by an external payment processor. Thank you
+                  God bless.
+              </small>
+      
+              <ion-item style="padding-bottom:6px; border:none; padding-left: 0px;">
+      
+                  <button ion-button block (click)="processPayment(form)" color="danger" padding style="padding-left: 10px;">
+                    <ion-icon name="card"></ion-icon> &nbsp; Give Now
+                  </button>
+      
+              </ion-item>
+      
+              <!-- <ion-item style="border-bottom:none; margin-top:2px; padding-bottom:30px;">
+                  <img src="assets/imgs/visa-mastercard-amex.png" style="height:30px; width:200px;
+                display:block; margin:auto;">
+                </ion-item> -->
+      
+          </ion-card>
+        </div>
+
+      </ion-list>
+
+</ion-content>

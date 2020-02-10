@@ -41,7 +41,7 @@ export class AppUsers {
     return response;
   }
 
-  navigation(role){
+  navigation(role:any){
     var query:string = "navigation/-w role='"+role+"' -o position asc";
     var buildQuery = this.app_api + query;
 
